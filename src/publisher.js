@@ -9,11 +9,14 @@ const client = mqtt.connect("mqtt://localhost", {
 
 client.on("connect", () => {
   console.log("connected");
+  let i = 0;
   setInterval(() => {
     var weatherPromise = Promise.resolve(getWeather("belluno"));
 
     weatherPromise.then((data) => {
-      client.publish("Weather", data, { qos: 2 });
+      var object = JSON.parse(data).coord;
+      client.publish("Weather", i + " " + JSON.stringify(object), { qos: 2 });
+      i++;
     });
     /*
     var cryptoPromise = Promise.resolve(getCryptoPrice("ETH", "EUR"));
