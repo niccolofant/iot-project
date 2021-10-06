@@ -1,15 +1,22 @@
-const mqtt = require("mqtt");
-const client = mqtt.connect("mqtt://localhost", {
-  port: 1883,
-  clean: false,
-  clientId: "mqttjs_1",
-});
+const startSubscriber = (qos, topic, cleansession, id) => {
+  const mqtt = require("mqtt");
 
-client.on("connect", () => {
-  client.subscribe("Weather", { qos: 1 });
-});
+  const client = mqtt.connect("mqtt://localhost", {
+    port: 1883,
+    clean: cleansession,
+    clientId: "mqttjs_" + id,
+  });
 
-client.on("message", (topic, message) => {
-  context = message.toString();
-  console.log(context);
-});
+  client.on("connect", () => {
+    client.subscribe(topic, { qos: qos });
+  });
+
+  client.on("message", (topic, message) => {
+    context = message.toString();
+    console.log(context);
+  });
+};
+
+startSubscriber(1, "Belluno", false, "1");
+
+exports.startSubscriber = startSubscriber;
