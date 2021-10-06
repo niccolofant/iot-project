@@ -16,10 +16,8 @@ client.on("connect", () => {
     var weatherPromise = Promise.resolve(getWeather("belluno"));
 
     weatherPromise.then((data) => {
-      var object = JSON.parse(data).coord;
-      client.publish("Weather", i + " " + JSON.stringify(object), {
-        qos: 2,
-      });
+      var object = data.coord;
+      client.publish("Weather", i + " " + JSON.stringify(object), { qos: 1 });
       i++;
     });
     /*

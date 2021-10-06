@@ -6,7 +6,7 @@ const client = mqtt.connect("mqtt://localhost", {
 });
 
 client.on("connect", () => {
-  client.subscribe("Weather", { qos: 2 });
+  client.subscribe("Weather", { qos: 1 });
 });
 
 client.on("message", (topic, message) => {

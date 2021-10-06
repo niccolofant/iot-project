@@ -5,7 +5,7 @@ const getWeather = async (city) => {
   const response = await axios.get(
     `${config.URL}${city}&appid=${config.API_KEY}`
   );
-  return JSON.stringify(response.data);
+  return response.data;
 };
 
 module.exports = getWeather;
