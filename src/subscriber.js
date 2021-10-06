@@ -4,7 +4,7 @@ const client = mqtt.connect("mqtt://localhost", {
 });
 
 client.on("connect", () => {
-  client.subscribe("Weather");
+  client.subscribe("Weather", { cleanSession: false });
 });
 
 client.on("message", (topic, message) => {
