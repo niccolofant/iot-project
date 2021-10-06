@@ -26,5 +26,5 @@ client.on("connect", () => {
       client.publish("Crypto", data, { qos: 2 });
     });
     console.log("messages sent");*/
-  }, 5000);
+  }, 2500);
 });
