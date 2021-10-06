@@ -5,6 +5,8 @@ const getCryptoPrice = require("./api-clients/cryptoCompareClient");
 
 const client = mqtt.connect("mqtt://localhost", {
   port: 1883,
+  clean: false,
+  clientId: "mqttjs_" + Math.random().toString(16).substr(2, 8),
 });
 
 client.on("connect", () => {
@@ -15,7 +17,9 @@ client.on("connect", () => {
 
     weatherPromise.then((data) => {
       var object = JSON.parse(data).coord;
-      client.publish("Weather", i + " " + JSON.stringify(object), { qos: 2 });
+      client.publish("Weather", i + " " + JSON.stringify(object), {
+        qos: 2,
+      });
       i++;
     });
     /*
