@@ -16,8 +16,7 @@ const startPublisher = (qos, venetoCities, cleansession) => {
       venetoCities.map((city) => {
         var weatherPromise = Promise.resolve(getWeather(city));
         weatherPromise.then((data) => {
-          var object = data.coord;
-          client.publish(city, i + " " + JSON.stringify(object), {
+          client.publish(city, i + " " + JSON.stringify(data), {
             qos: qos,
           });
         });
