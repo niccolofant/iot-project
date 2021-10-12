@@ -27,7 +27,7 @@ This app requires [Node.js](https://nodejs.org/) v10+ to run.
     ```
 5) Start the broker, publisher and subscriber
     ```sh
-    cd src/backend
+    cd src
     node broker
     node publisher
     node subscriber
