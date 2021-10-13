@@ -1,3 +1,6 @@
+/**
+ * Funzione per far partire un server/broker MQTT
+ */
 const startBroker = () => {
   const aedes = require("aedes")();
   const server = require("net").createServer(aedes.handle);

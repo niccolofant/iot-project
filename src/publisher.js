@@ -1,3 +1,9 @@
+/**
+ * Funzione per far partire un Publisher
+ * @param qos Quality of Service desiderata (0, 1 o 2)
+ * @param venetoCities Array di città di cui si vogliono pubblicare informazioni
+ * @param cleansession Specifica il tipo di sessione che si vuole creare
+ */
 const startPublisher = (qos, venetoCities, cleansession) => {
   const mqtt = require("mqtt");
 
@@ -26,6 +32,7 @@ const startPublisher = (qos, venetoCities, cleansession) => {
   });
 };
 
+//esempio
 const venetoCities = [
   "Belluno",
   "Padova",

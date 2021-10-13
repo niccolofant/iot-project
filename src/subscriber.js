@@ -1,3 +1,10 @@
+/**
+ * Funzione per far partire un Subscriber
+ * @param qos Quality of Service desiderata (0, 1 o 2)
+ * @param {*} topic Topic a cui si vuole iscriversi
+ * @param {*} cleansession Specifica il tipo di sessione che si vuole creare
+ * @param {*} id Identificatore del client
+ */
 const startSubscriber = (qos, topic, cleansession, id) => {
   const mqtt = require("mqtt");
 
